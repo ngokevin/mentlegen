@@ -1,0 +1,98 @@
+@mixin transform($transform) {
+    -moz-transform: $transform;
+   -ms-transform: $transform;
+   -o-transform: $transform;
+   -webkit-transform: $transform;
+}
+
+@mixin transition($transition) {
+    -moz-transition: $transition;
+    -ms-transition: $transition;
+    -o-transition: $transition;
+    -webkit-transition: $transition;
+    transition: $transition;
+}
+
+html, body {
+    background: rgb(50, 50, 55);
+    color: rgb(240, 240, 245);
+    font-family: monospace;
+    font-size: 26px;
+}
+
+html.flash, html.flash body {
+    @include transition(all .2s);
+    background: rgb(10, 10, 15);
+}
+
+body {
+    text-align: center;
+}
+
+h2 {
+    @include transform(translateX(30px));
+    font-family: 'Rochester', cursive;
+    opacity: .3;
+    &.show {
+        @include transform(translateX(-30px));
+    }
+}
+
+img, h2 {
+    @include transition(all .45s);
+    border-radius: 3px;
+    display: block;
+    margin: 26px auto;
+    max-width: 85%;
+    &.show {
+        opacity: 1;
+    }
+}
+
+img {
+    @include transform(rotate(-5deg));
+    opacity: .01;
+    &.show {
+        @include transform(rotate(5deg));
+    }
+}
+
+input[type="checkbox"] {
+    margin: 0 4px;
+    @include transition(all .1s);
+    @include transform(translateY(-2px));
+    &.show {
+        @include transform(translateY(2px));
+    }
+}
+label {
+    @include transition(all .1s);
+    @include transform(translateY(2px));
+    display: inline-block;
+    &.show {
+        @include transform(translateY(-2px));
+    }
+}
+
+audio {
+    display: none;
+}
+
+.social {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+}
+i {
+    @include transform(scale(1));
+    @include transition(all .4s);
+    color: rgb(240, 240, 240);
+    font-size: 24px;
+    opacity: .55;
+    &:hover {
+        opacity: .95;
+    }
+    &.show {
+        @include transform(scale(1.2));
+    }
+}
